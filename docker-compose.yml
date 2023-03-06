@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  api:
+    image: admin
+    networks:
+      - proxynet
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    command: npm run start:debug
+    volumes:
+      - ".:/usr/src/app"
+      - "/usr/src/app/node_modules"
+    ports:
+      - 4003:4003
+      - 9231:9231
+    tty: true
+
+networks:
+  proxynet:
+    name: custom_network     
