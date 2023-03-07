@@ -3,6 +3,7 @@ import { AxiosRequestConfig, AxiosResponse } from "axios";
 import HttpCustomException from 'src/Exceptions/HttpCustomException';
 
 export abstract class AxiosWebServices {
+
     async get<R = any>(url: string, config?: AxiosRequestConfig): Promise<R> {
         try {
             const response: AxiosResponse<R> = await axios.get<R>(url, config);
