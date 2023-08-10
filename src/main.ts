@@ -16,8 +16,8 @@ async function bootstrap() {
   );
   app.use(helmet());
 
-  app.use(BodyParser.json())
-  app.use(BodyParser.urlencoded({ extended: true }))
+  app.use(BodyParser.json());
+  app.use(BodyParser.urlencoded({ extended: true }));
   app.setGlobalPrefix('api/v1/ms-seed');
   app.enableCors();
   await app.listen(configService.get<string>('PORT'));

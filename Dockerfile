@@ -11,6 +11,6 @@ RUN npm run build
 # RUN adduser --disabled-password esolutionsTeam
 # RUN chown -R esolutionsTeam:esolutionsTeam /
 # USER esolutionsTeam
-EXPOSE 3003
+EXPOSE 33000
 RUN npm cache clean -f
 CMD ["npm","start"]
