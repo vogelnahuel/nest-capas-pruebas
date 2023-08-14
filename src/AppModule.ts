@@ -1,8 +1,8 @@
-import { Module } from "@nestjs/common";
-import { ConfigModule } from "@nestjs/config";
-import { envFilePathConfiguration } from "./Configs/EnvFilePathConfig";
-import { nestEnvConfiguration } from "./Configs/NestEnvConfig";
-import { ApplicationModule } from "./Modules/ApplicationModule";
+import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { envFilePathConfiguration } from './Configs/EnvFilePathConfig';
+import { nestEnvConfiguration } from './Configs/NestEnvConfig';
+import { ApplicationModule } from './Modules/ApplicationModule';
 
 @Module({
     imports: [
@@ -12,6 +12,6 @@ import { ApplicationModule } from "./Modules/ApplicationModule";
             isGlobal: true,
         }),
         ApplicationModule,
-    ]
+    ],
 })
-export class AppModule { }
+export class AppModule {}
