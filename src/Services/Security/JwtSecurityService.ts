@@ -16,9 +16,9 @@ export default class JwtSecurityService {
         };
     }
 
-    async generateAccessToken(uuid: string, id: number, username: string): Promise<string> {
+    async generateAccessToken(uuid: string, id: number, username: string, permissions: string[]): Promise<string> {
         try {
-            const payload = { uuid, id, username };
+            const payload = { uuid, id, username, permissions };
             const tokenExpiration = '8h';
             return this._jwtService.sign(payload, {
                 expiresIn: tokenExpiration,
