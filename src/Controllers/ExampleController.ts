@@ -14,7 +14,7 @@ export class ExampleController {
 
     @Post()
     @UseGuards(JwtAuthGuard, PermissionGuard)
-    @Permissions('PERMISO1', 'PERMISO2')
+    @Permissions('PER_OBTENER_DASHBOARD')
     @HttpCode(HttpStatus.OK)
     async getPong(@Body() body: ExampleRequest): Promise<Response<ExampleResponse>> {
         const response = await this._exampleService.getPong2(body);
@@ -23,6 +23,7 @@ export class ExampleController {
 
     @Get()
     @HttpCode(HttpStatus.OK)
+    @UseGuards(JwtAuthGuard)
     async getTest(): Promise<Response<ExampleResponse>> {
         const response = await this._exampleService.test();
         return new Response<ExampleResponse>(response);

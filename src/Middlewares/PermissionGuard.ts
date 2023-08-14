@@ -1,4 +1,4 @@
-import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
+import { Injectable, CanActivate, ExecutionContext, ForbiddenException } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { JwtService } from '@nestjs/jwt';
 
@@ -19,17 +19,21 @@ export class PermissionGuard implements CanActivate {
         const token = request.headers.authorization?.split(' ')[1]; // Obtener el token del header
 
         if (!token) {
-            return false; // No se proporcionó un token en el header
+            throw new ForbiddenException('No se proporcionó un token en el encabezado de autorización');
         }
 
         try {
             const decodedToken: any = this.jwtService.verify(token);
-            const userPermissions = decodedToken.permissions || []; // Suponiendo que los permisos están en el payload del JWT
+            const userPermissions = decodedToken.permissions || [];
 
             const hasPermission = requiredPermissions.every((permission) => userPermissions.includes(permission));
-            return hasPermission;
+            if (!hasPermission) {
+                throw new ForbiddenException('No tienes permiso para acceder a este recurso');
+            }
+            return true;
         } catch (error) {
-            return false; // El token no es válido o expiró
+            console.log('error', error.response.message);
+            throw new ForbiddenException(error.response.message || 'El token no es válido o ha expirado');
         }
     }
 }
