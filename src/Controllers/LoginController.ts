@@ -6,7 +6,6 @@ import { ExampleService } from 'src/Services/ExampleService';
 
 @Controller('login')
 export class ExampleController {
-    // eslint-disable-next-line no-empty-function
     constructor(private readonly _exampleService: ExampleService) {}
 
     @Post()

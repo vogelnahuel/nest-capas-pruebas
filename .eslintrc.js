@@ -18,7 +18,7 @@ module.exports = {
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "error",
     "no-useless-constructor": "off",
-    "@typescript-eslint/no-useless-constructor": "error",
+    "@typescript-eslint/no-useless-constructor": "off",
     "import/prefer-default-export": "off",
     '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
@@ -40,6 +40,8 @@ module.exports = {
     "@typescript-eslint/no-shadow": ["error"],
     "object-shorthand": "off",
     "class-methods-use-this": "off",
+    "no-empty-function": "off",
+    "@typescript-eslint/no-empty-function": "off"
 },
 settings: {
   'import/resolver': {

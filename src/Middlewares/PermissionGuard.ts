@@ -6,17 +6,17 @@ import { JwtService } from '@nestjs/jwt';
 export class PermissionGuard implements CanActivate {
     constructor(
         private readonly reflector: Reflector,
-        private readonly jwtService: JwtService, // eslint-disable-next-line no-empty-function
+        private readonly jwtService: JwtService,
     ) {}
 
     canActivate(context: ExecutionContext): boolean {
         const requiredPermissions = this.reflector.get<string[]>('permissions', context.getHandler());
         if (!requiredPermissions || requiredPermissions.length === 0) {
-            return true; // No se definió ningún permiso, permitir acceso
+            return true;
         }
 
         const request = context.switchToHttp().getRequest();
-        const token = request.headers.authorization?.split(' ')[1]; // Obtener el token del header
+        const token = request.headers.authorization?.split(' ')[1];
 
         if (!token) {
             throw new ForbiddenException('No se proporcionó un token en el encabezado de autorización');

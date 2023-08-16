@@ -1,4 +1,3 @@
-/* eslint-disable no-empty-function */
 import { Body, Controller, Get, HttpCode, HttpStatus, Post, UseGuards } from '@nestjs/common';
 import Response from 'src/Helpers/Formatter/Response';
 import { JwtAuthGuard } from 'src/Middlewares/JwtAuthGuard';
